@@ -6,7 +6,7 @@ const config = require('./config');
 const { MongoManager } = require('./src/mongo');
 const api = require('./src/api');
 const app = express();
-const { passport } = require('./src/passport');
+// const { passport } = require('./src/passport');
 
 const mongoManager = new MongoManager(config);
 
@@ -21,7 +21,7 @@ app.use(cookieParser());
 mongoManager.connect();
 
 // Authorization
-app.use(passport.initialize());
+// app.use(passport.initialize());
 
 app.use('/api/v1', api(config));
 
