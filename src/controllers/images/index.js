@@ -28,11 +28,12 @@ const { list } = require('./list');
 module.exports = (models, { config }) => {
   const api = router();
 
-  api.get('/all/', list(models, { config }));
+  api.get('/all/', list(models));
   api.get('/nightscapes/', list(models, { category: "nightscapes" }));
   api.get('/landscapes/', list(models, { category: "landscapes" }));
   api.get('/other/', list(models, { category: "other" }));
   api.get('/flowers/', list(models, { category: "flowers" }));
+  api.get('/instock/', list(models, { inStock: true }));
   // api.get('/:_id', get(models, { config }));
   // api.post('/', create(models, { config }));
   // api.patch('/:_id', update(models, { config }));

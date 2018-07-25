@@ -1,6 +1,6 @@
 const _ = require('lodash');
 
-const list = ({ Image }, { category }) => async (req, res, next) => {
+const list = ({ Image }, config ) => async (req, res, next) => {
   // let { limit, skip, search } = req.query;
   // skip = skip ? parseInt(skip, 10) : 0;
   // limit = limit ? parseInt(limit, 10) : 100;
@@ -8,7 +8,10 @@ const list = ({ Image }, { category }) => async (req, res, next) => {
   try {        
     let scope = {};
 
-    if (category) scope = { category: category };
+    if (config) {
+      scope = config;
+    }
+    
     const images = await Image.find(scope).sort({ year: -1 });
 
     res.status(200).send({ images });
