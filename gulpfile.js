@@ -7,8 +7,7 @@ gulp.task('api', () => nodemon({
   watch: ['./src']
 }));
 
-gulp.task('mongo', (callback) => {
-  // const dbProcess = spawn('mongod');
+gulp.task('mongo', (callback) => {  
   const dbProcess = spawn('C:\\mongodb\\bin\\mongod.exe');
   dbProcess.on('data', console.log);
   dbProcess.on('close', (code) => {

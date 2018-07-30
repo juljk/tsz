@@ -6,7 +6,6 @@ const config = require('./config');
 const { MongoManager } = require('./src/mongo');
 const api = require('./src/api');
 const app = express();
-// const { passport } = require('./src/passport');
 
 const mongoManager = new MongoManager(config);
 
@@ -20,9 +19,6 @@ app.use(cookieParser());
 
 mongoManager.connect();
 
-// Authorization
-// app.use(passport.initialize());
-
 app.use('/api/v1', api(config));
 
 app.use(express.static(path.join(__dirname, 'public/build')));
@@ -30,7 +26,6 @@ app.use(express.static(path.join(__dirname, 'public/build')));
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, './public/build/', 'index.html'));
 });
-
 
 // error handler
 app.use(function(err, req, res, next) {

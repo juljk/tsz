@@ -1,11 +1,4 @@
 const { Router: router } = require('express');
-const { authenticate } = require('../../middleware');
-
-// const { get } = require('./get');
-
-// const { create } = require('./create');
-// const { update } = require('./update');
-// const { remove } = require('./remove');
 
 const { list } = require('./list');
 
@@ -34,10 +27,6 @@ module.exports = (models, { config }) => {
   api.get('/other/', list(models, { category: "other" }));
   api.get('/flowers/', list(models, { category: "flowers" }));
   api.get('/instock/', list(models, { inStock: true }));
-  // api.get('/:_id', get(models, { config }));
-  // api.post('/', create(models, { config }));
-  // api.patch('/:_id', update(models, { config }));
-  // api.delete('/:_id', remove(models, { config }));
 
   return api;
 };
